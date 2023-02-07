@@ -52,11 +52,23 @@ const App: FC = () => {
     return <div className="min-h-screen bg-[#2f363e]" />;
   }
 
+  const AnalogRoundLine = (start: number, end: number) => {
+    return range(start, end).map((i) => (
+      <div
+        key={i}
+        className="absolute inset-0 text-white text-center before:absolute before:top-[0.5rem] before:opacity-40 before:left-[50%] before:translate-x-[-50%] before:w-[2px] before:h-[10px] before:bg-white "
+        style={{ transform: `rotate(calc(${i * 6}deg))` }}
+      >
+        <b></b>
+      </div>
+    ));
+  };
+
   const analogClockHour = (start: number, end: number) => {
     return range(start, end).map((i) => (
       <div
         key={i}
-        className="absolute inset-5 text-white text-center"
+        className="absolute inset-5 text-white text-center before:absolute before:top-[-1rem] before:left-[50%] before:translate-x-[-50%] before:w-[6px] before:h-[16px] before:bg-gray-400 "
         style={{ transform: `rotate(calc(${i * 30}deg))` }}
       >
         <b
@@ -78,31 +90,32 @@ const App: FC = () => {
             className="relative flex justify-center items-center w-[450px] h-[450px] bg-[#2f363e] rounded-full shadow-analogClock mb-[40px] 
             before:content-[''] before:absolute before:w-4 before:h-4 before:bg-[#2f363e] before:border-[2px] before:border-solid before:border-[#fff] before:rounded-full before:z-[13]"
           >
+            {AnalogRoundLine(1, 60)}
             <div
               id="analog-clock-hand-hour"
-              className="absolute h-[180px] w-[180px]"
+              className="absolute h-[225px] w-[225px]"
             >
               <i
-                className={`h-[180px] w-[180px] flex justify-center absolute rounded-full 
-                before:content-[''] before:absolute before:w-2 before:h-[90px] before:bg-gray-500 before:rounded-t-md before:z-10 before:origin-bottom`}
+                className={`h-[225px] w-[225px] flex justify-center absolute rounded-full 
+                before:content-[''] before:absolute before:w-2 before:h-[120px] before:bg-gray-500 before:rounded-t-md before:z-10 before:origin-bottom`}
                 style={{ transform: `rotateZ(${currentAnalogHour}deg)` }}
               />
             </div>
             <div
               id="analog-clock-hand-minute"
-              className="absolute h-[240px] w-[240px]"
+              className="absolute h-[300px] w-[300px]"
             >
               <i
-                className="h-[240px] w-[240px] flex justify-center absolute rounded-full before:content-[''] before:absolute before:w-1 before:h-[120px] before:bg-gray-300 before:rounded-t-md before:z-11"
+                className="h-[300px] w-[300px] flex justify-center absolute rounded-full before:content-[''] before:absolute before:w-1 before:h-[150px] before:bg-gray-300 before:rounded-t-md before:z-11"
                 style={{ transform: `rotateZ(${currentAnalogMinutes}deg)` }}
               />
             </div>
             <div
               id="analog-clock-hand-second"
-              className="absolute h-[300px] w-[300px]"
+              className="absolute h-[340px] w-[340px]"
             >
               <i
-                className="h-[300px] w-[300px] flex justify-center absolute rounded-full before:content-[''] before:absolute before:w-[2px] before:h-[180px] before:bg-gray-200 before:rounded-lg before:z-12"
+                className="h-[340px] w-[340px] flex justify-center absolute rounded-full before:content-[''] before:absolute before:w-[2px] before:h-[220px] before:bg-gray-200 before:rounded-lg before:z-12"
                 style={{ transform: `rotateZ(${currentAnalogSeconds}deg)` }}
               />
             </div>
