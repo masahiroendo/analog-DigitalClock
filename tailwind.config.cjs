@@ -17,11 +17,20 @@ module.exports = {
       },
       animation: {
         seconds: "seconds 1s steps(1) infinite",
+        fadeIn: "fadeIn 0.5s ease-in",
       },
       keyframes: {
         seconds: {
           "0%": { opacity: "1" },
           "50%": { opacity: "0" },
+        },
+        fadeIn: {
+          "0%": {
+            opacity: 0,
+          },
+          "100%": {
+            opacity: 1,
+          },
         },
       },
     },
